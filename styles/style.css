@@ -1,0 +1,68 @@
+.first-color {
+    background: #222831;
+}
+
+.second-color {
+    background: #393e46;
+}
+
+.third-color {
+    background: #f96d00;
+}
+
+.fourth-color {
+    background: #f2f2f2;
+}
+
+body {
+    color: #f2f2f2;
+    background-color: #222831;
+    font-family: "Red Hat Text";
+}
+
+header {
+    text-align: center;
+}
+
+.bookwrap {
+    display: flex;
+    border-top: 1px solid gray;
+}
+
+.bookwrap:first-of-type {
+    border-top: none;
+}
+
+.bookwrap>img {
+    max-width: 20%;
+    display: block;
+    height: auto;
+}
+
+.bookwraptext {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #393e46;
+    border: solid 1px black;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button_orange {
+    border: none;
+    background-color: #f96d00;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.button_orange>a {
+    text-decoration: none;
+    color: #f2f2f2;
+}

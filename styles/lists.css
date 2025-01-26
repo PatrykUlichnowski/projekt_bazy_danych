@@ -1,0 +1,15 @@
+.list {
+    border: 1px solid #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.list>h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.list>p {
+    margin: 0;
+}
