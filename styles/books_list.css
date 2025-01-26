@@ -1,0 +1,17 @@
+.books_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookwrapper {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bookwrapper>img {
+    width: 15%;
+    min-width: 10%;
+    height: auto;
+}

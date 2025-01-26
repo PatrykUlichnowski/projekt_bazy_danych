@@ -13,6 +13,15 @@ session_start();
     <?php
     echo "<p>Hello " . $_SESSION['username'] . "!</p>";
     ?>
+    <button class='button_orange'>
+        <a href='check_list.php'>Check list</a>
+    </button>
+    <button class='button_orange'>
+        <a href='newlist.php'>Create a new list</a>
+    </button>
+    <button class='button_orange'>
+        <a href='delete_list.php'>Delete a list</a>
+    </button>
     <h1>My lists:</h1>
     <?php
     $host = "localhost";
@@ -42,10 +51,6 @@ session_start();
     }
 
     ?>
-    <button class='button_orange'>
-
-        <a href='newlist.php'>Create a new list</a>
-    </button>
 
 </body>
 
