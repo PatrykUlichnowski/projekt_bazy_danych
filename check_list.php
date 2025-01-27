@@ -43,6 +43,10 @@ session_start();
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $list = $_POST['list'];
+        if (!$_POST['list']) {
+            $list = $_SESSION['rememberlist'];
+        }
+        $_SESSION['rememberlist'] = $list;
         $querry = " SELECT b.title, b.description, b.cover_img_path, 
                             p.name as publisher, g.name as genre, a.first_name, a.last_name
                     from lists l
@@ -59,23 +63,46 @@ session_start();
                     where l.name = '" . $list . "';";
 
         $querry_result = mysqli_query($connection, $querry);
+        echo "<form name='delete' method='post' id='delete'>";
+        echo "<button type='submit' class='button_orange' name='delete'>Delete selected books from the list</button>";
         echo "<h3>List name - " . $list . "</h3>";
         echo "<div class='books_list'>";
         foreach ($querry_result as $row => $column) {
             echo "
-                <div class='bookwrapper'>
-                    <div class='bookinfo'>
+                <div class='bookwrap'>
+                <img src='" . $column['cover_img_path'] . "' alt='cover'>
+                    <div class='bookwraptext'>
                         <h4>Title: " . $column['title'] . "</h4>
                         <p>Description: " . $column['description'] . "</p>
                         <p>Publisher: " . $column['publisher'] . "</p>
                         <p>Genre: " . $column['genre'] . "</p>
-                        <p>Author: " . $column['first_name'] . " " . $column['last_name'] . "</p>
+                        <p>Author: " . $column['first_name'] . " " . $column['last_name'] . "</p>          
+                        <label for='book[]'>Select book: </label>
+                        <input type='checkbox' name='book[]' value=\"" . $column['title'] . "\">
                     </div>
-                    <img src='" . $column['cover_img_path'] . "' alt='cover'>
                 </div>
             ";
         }
         echo "</div>";
+        echo "</form>";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['delete'])) {
+                $book = $_POST['book'];
+                $list = $_SESSION['rememberlist'];
+                foreach ($book as $value) {
+                    $deletequerry = "
+                                    DELETE from books_list
+                                    where list_id = (SELECT id from lists where name = \"" . $list . "\") and 
+                                    book_id = (SELECT id from books where title = \"" . $value . "\");
+                                ";
+                    if (mysqli_query($connection, $deletequerry)) {
+                        echo "<p>Removed books from the list.</p>";
+                    } else {
+                        echo "<p>Error, can not remove books from the list</p>";
+                    }
+                }
+            }
+        }
     }
     ?>
 </body>

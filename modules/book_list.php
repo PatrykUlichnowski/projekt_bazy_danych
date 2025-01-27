@@ -30,8 +30,14 @@ foreach ($querry_result as $row => $column) {
 
     echo "<p>";
     echo "Published by: " . $column['publisher'] . "<br>";
+    echo "</p>";
+    echo "<p>";
     echo "Genre: " . $column['genre'] . "<br>";
+    echo "</p>";
+    echo "<p>";
     echo "Number of pages: " . $column['pages'] . "<br>";
+    echo "</p>";
+    echo "<p>";
     echo "Short description: " . $column['description'];
     echo "</p>";
     echo "</div>"; //bookwraptext

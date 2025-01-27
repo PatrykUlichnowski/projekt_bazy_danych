@@ -30,7 +30,7 @@ session_start();
                         from lists l
                         join users u
                         on l.user_id = u.id
-                        where u.username = '" . $_SESSION['username'] . "'
+                        where u.username = \"" . $_SESSION['username'] . "\"
                         group by l.name, l.description;";
 
             $querry_result = mysqli_query($connection, $querry_list);
@@ -73,10 +73,11 @@ session_start();
             echo "Number of pages: " . $column['pages'] . "<br>";
             echo "Short description: " . $column['description'];
             echo "</p>";
+            echo "<label for='book[]'>Select book: </label>";
+            echo "<input type='checkbox' name='book[]' value=\"" . $column['title'] . "\">";
             echo "</div>"; //bookwraptext
 
             echo "</div>"; //bookwrap
-            echo "<input type='checkbox' name='book[]' value='" . $column['title'] . "'>";
         }
         ?>
     </form>
@@ -92,11 +93,11 @@ session_start();
                             on b.id = bl.book_id
                             join lists l 
                             on l.id = bl.list_id
-                            where l.name = '" . $list . "' and b.title = '" . $value . "';";
+                            where l.name = \"" . $list . "\" and b.title = \"" . $value . "\";";
             $addquerry = "
                             INSERT INTO books_list VALUES 
-                            ((SELECT id FROM lists WHERE name LIKE '" . $list . "'),
-                            (SELECT id FROM books WHERE title LIKE '" . $value . "'));
+                            ((SELECT id FROM lists WHERE name LIKE \"" . $list . "\"),
+                            (SELECT id FROM books WHERE title LIKE \"" . $value . "\"));
                         ";
             if (mysqli_num_rows(mysqli_query($connection, $checkqueery)) == 0) {
                 if (mysqli_query($connection, $addquerry)) {
