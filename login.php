@@ -5,7 +5,7 @@ session_unset(); // if the user was logged in, unset the session variables
 $host = "localhost";
 $user = "root";
 $password = "admin";
-$dbname = "projekt_bd2";
+$dbname = "projekt_bd3";
 
 $connection = mysqli_connect($host, $user, $password, $dbname);
 if (!$connection) {
@@ -39,11 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 
 <?php include './modules/head.php'; ?>
+<link rel="stylesheet" href="./styles/login_form.css">
 
 <body>
     <h1>ShelfLogger</h1>
     <h2>Log in</h2>
-    <form method="post">
+    <form method="post" class="login_form">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br>
@@ -51,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="password" id="password" name="password" required>
         <br>
         <button class='button_orange' type="submit">LOG IN</button>
+        <button class="button_orange">
+            <a href='register.php'>Register</a>
+        </button>
     </form>
-    <button class="button_orange">
-        <a href='register.php'>Register</a>
-    </button>
 </body>

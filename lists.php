@@ -11,23 +11,25 @@ session_start();
     <?php include './modules/header.php'; ?>
 
     <?php
-    echo "<p>Hello " . $_SESSION['username'] . "!</p>";
+    echo "<p class='user'>Hello " . $_SESSION['username'] . "!</p>";
     ?>
-    <button class='button_orange'>
-        <a href='check_list.php'>Check list</a>
-    </button>
-    <button class='button_orange'>
-        <a href='newlist.php'>Create a new list</a>
-    </button>
-    <button class='button_orange'>
-        <a href='delete_list.php'>Delete a list</a>
-    </button>
+    <div class='options'>
+        <button class='button_orange'>
+            <a href='check_list.php'>Check list</a>
+        </button>
+        <button class='button_orange'>
+            <a href='newlist.php'>Create a new list</a>
+        </button>
+        <button class='button_orange'>
+            <a href='delete_list.php'>Delete a list</a>
+        </button>
+    </div>
     <h1>My lists:</h1>
     <?php
     $host = "localhost";
     $user = "root";
     $password = "admin";
-    $dbname = "projekt_bd2";
+    $dbname = "projekt_bd3";
 
     $connection = mysqli_connect($host, $user, $password, $dbname);
     if (!$connection) {

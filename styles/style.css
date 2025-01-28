@@ -18,31 +18,13 @@ body {
     color: #f2f2f2;
     background-color: #222831;
     font-family: "Red Hat Text";
+    padding: 0;
+    margin: 0;
 }
 
 header {
     text-align: center;
-}
-
-.bookwrap {
-    display: flex;
-    border-top: 1px solid gray;
-}
-
-.bookwrap:first-of-type {
-    border-top: none;
-}
-
-.bookwrap>img {
-    max-width: 20%;
-    display: block;
-    height: auto;
-}
-
-.bookwraptext {
-    margin-left: 2%;
-    display: flex;
-    flex-direction: column;
+    font-size: 2em;
 }
 
 nav {
@@ -52,17 +34,12 @@ nav {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
 }
 
-.button_orange {
-    border: none;
-    background-color: #f96d00;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #f2f2f2;
-}
-
-.button_orange>a {
-    text-decoration: none;
-    color: #f2f2f2;
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }

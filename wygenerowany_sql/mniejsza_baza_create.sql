@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `books` (
 	`author_id` int NOT NULL,
 	`publisher_id` int NOT NULL,
 	`genre_id` int NOT NULL,
+	`isbn` text,
 	PRIMARY KEY (`id`)
 );
 

@@ -9,13 +9,13 @@ session_start();
 <body>
     <?php include './modules/header.php'; ?>
 
-    <form action="" method="post">
+    <form action="" method="post" class='options'>
         <select name="list" id="list">
             <?php
             $host = "localhost";
             $user = "root";
             $password = "admin";
-            $dbname = "projekt_bd2";
+            $dbname = "projekt_bd3";
 
             $connection = mysqli_connect($host, $user, $password, $dbname);
             if (!$connection) {
@@ -64,7 +64,9 @@ session_start();
 
         $querry_result = mysqli_query($connection, $querry);
         echo "<form name='delete' method='post' id='delete'>";
+        echo "<div class='options'>";
         echo "<button type='submit' class='button_orange' name='delete'>Delete selected books from the list</button>";
+        echo "</div>";
         echo "<h3>List name - " . $list . "</h3>";
         echo "<div class='books_list'>";
         foreach ($querry_result as $row => $column) {
@@ -97,6 +99,7 @@ session_start();
                                 ";
                     if (mysqli_query($connection, $deletequerry)) {
                         echo "<p>Removed books from the list.</p>";
+                        header("Refresh:0");
                     } else {
                         echo "<p>Error, can not remove books from the list</p>";
                     }

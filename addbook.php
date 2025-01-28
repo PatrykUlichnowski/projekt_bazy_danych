@@ -6,44 +6,40 @@ session_start();
 <?php include './modules/head.php'; ?>
 
 
-<!-- 
-    TO można przerobic tak aby dzialalo z checkboxami, wyprintowac wszystkie ksiazki tak jak w check_list i nastpenie zaznaczone przeiterowac i dodac je do listy
-    
-    USUWANIE: na jednej stronie php mozna handlowac dwa rozne formularze, jednym mozna wyswietlic ksiazki z X listy a nastepnie zrobic przy nich checkboxy i wyjebac z listy te ktore sa zaznaczone 
--->
-
 
 
 <body>
     <?php include './modules/header.php'; ?>
     <form action="" method="post">
         <!-- lista  -->
-        <select name='list' id='list'>
-            <?php
-            $host = "localhost";
-            $user = "root";
-            $password = "admin";
-            $dbname = "projekt_bd2";
+        <div class='options'>
+            <select name='list' id='list'>
+                <?php
+                $host = "localhost";
+                $user = "root";
+                $password = "admin";
+                $dbname = "projekt_bd3";
 
-            $connection = mysqli_connect($host, $user, $password, $dbname);
-            $querry_list = " SELECT l.name, l.description
+                $connection = mysqli_connect($host, $user, $password, $dbname);
+                $querry_list = " SELECT l.name, l.description
                         from lists l
                         join users u
                         on l.user_id = u.id
                         where u.username = \"" . $_SESSION['username'] . "\"
                         group by l.name, l.description;";
 
-            $querry_result = mysqli_query($connection, $querry_list);
-            foreach ($querry_result as $row => $column) {
-                echo "
+                $querry_result = mysqli_query($connection, $querry_list);
+                foreach ($querry_result as $row => $column) {
+                    echo "
                         <option value='" . $column['name'] . "'>" . $column['name'] . "</option>
                     ";
-            }
-            ?>
-        </select><br>
-        <button type="submit" class='button_orange'>
-            Add selected books to that list
-        </button>
+                }
+                ?>
+            </select><br>
+            <button type="submit" class='button_orange'>
+                Add selected books to that list
+            </button>
+        </div>
         <!-- ksiazka -->
         <?php
         $querry_books = " SELECT b.title, b.description, b.cover_img_path, b.pages, 
@@ -60,7 +56,7 @@ session_start();
         foreach ($querry_result as $row => $column) {
             echo "<div class='bookwrap'>";
 
-            echo "<img src='" . $column['cover_img_path'] . "' alt='photo'>";
+            echo "<img src='" . $column['cover_img_path'] . "' alt='cover'>";
 
             echo "<div class='bookwraptext'>";
             echo "<h3>";
@@ -86,7 +82,6 @@ session_start();
         $list = $_POST['list'];
         $book = $_POST['book'];
         foreach ($book as $value) {
-            echo $value . ", " . $list;
             $checkqueery = "SELECT list_id, book_id
                             from books_list bl
                             join books b

@@ -37,4 +37,24 @@ SELECT b.title, b.description, b.cover_img_path,
                     on b.genre_id = g.id
                     join authors a
                     on b.author_id = a.id
-                    where l.name = 'Sci-Fi Favorites'
+                    where l.name = 'Sci-Fi Favorites';
+                    
+select * from books;
+
+
+update books
+set isbn = "9781476787848"
+where id = 10;
+
+update books
+set cover_img_path = concat("https://covers.openlibrary.org/b/isbn/", isbn ,"-M.jpg")
+where id < 100;
+
+select * from authors;
+
+
+update books
+set isbn = "9780756405892"
+where id = (select id from(
+select id from books where title = "The Name of the Wind"
+) xd);

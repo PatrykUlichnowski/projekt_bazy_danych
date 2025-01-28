@@ -1,0 +1,27 @@
+.bookwrap {
+    display: flex;
+    border-top: 1px solid gray;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+}
+
+.bookwrap:first-of-type {
+    border-top: none;
+}
+
+.bookwrap>img {
+    max-width: 20%;
+    display: block;
+    height: auto;
+}
+
+.bookwraptext {
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookwraptext>p {
+    margin: 2px;
+}

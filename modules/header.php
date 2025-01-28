@@ -1,5 +1,6 @@
 <header>
     <h1>ShelfLogger</h1>
+    <p>Keep your books organized!</p>
 </header>
 <nav>
     <button class='button_orange'>

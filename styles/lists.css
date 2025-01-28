@@ -13,3 +13,29 @@
 .list>p {
     margin: 0;
 }
+
+.user {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+}
+
+form>input {
+    max-width: 40%;
+}
+
+form>button {
+    margin-top: 10px;
+}
+
+h1 {
+    text-align: center;
+}

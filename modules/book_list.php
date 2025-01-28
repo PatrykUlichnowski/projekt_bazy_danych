@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "admin";
-$dbname = "projekt_bd2";
+$dbname = "projekt_bd3";
 
 $connection = mysqli_connect($host, $user, $password, $dbname);
 if (!$connection) {

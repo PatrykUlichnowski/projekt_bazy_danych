@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <?php include './modules/head.php'; ?>
+<link rel="stylesheet" href="./styles/lists.css">
 
 <body>
     <?php include './modules/header.php'; ?>
@@ -22,7 +23,7 @@ session_start();
     $host = "localhost";
     $user = "root";
     $password = "admin";
-    $dbname = "projekt_bd2";
+    $dbname = "projekt_bd3";
 
     $connection = mysqli_connect($host, $user, $password, $dbname);
     if (!$connection) {

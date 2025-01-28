@@ -1,0 +1,19 @@
+.button_orange {
+    border: none;
+    background-color: #f96d00;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #f2f2f2;
+    font-size: 1em;
+    padding: 10px;
+    margin: 5px;
+}
+
+.button_orange:hover {
+    background-color: #a74800;
+}
+
+.button_orange>a {
+    text-decoration: none;
+    color: #f2f2f2;
+}
