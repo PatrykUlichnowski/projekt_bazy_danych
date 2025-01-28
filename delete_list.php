@@ -42,8 +42,11 @@ session_start();
         if (isset($_POST['list'])) {
             $list = $_POST['list'];
             foreach ($list as $value) {
-                $delete = "DELETE FROM lists WHERE name = '$value'";
+                $delete = "DELETE FROM books_list where list_id = (select id from(
+                            select id from lists where name = '" . $value . "') xd)";
+                $deletelists = "DELETE FROM lists WHERE name = '$value'";
                 mysqli_query($connection, $delete);
+                mysqli_query($connection, $deletelists);
             }
             header("Refresh:0");
         }
